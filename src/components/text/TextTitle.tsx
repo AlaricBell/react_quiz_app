@@ -1,6 +1,6 @@
-const TextTitle: React.FC<{content: string}> = ({content}) => {
+const TextTitle: React.FC<{children: any}> = ({children}) => {
   return (
-    <h2 className="text-title">{content}</h2>
+    <h2 className="text-title">{children}</h2>
   )
 }
 

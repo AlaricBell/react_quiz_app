@@ -9,6 +9,22 @@
 .container {
   max-width: 90vw;
   margin: 0 auto;
+
+  &-buttons {
+    @include flex($dir: row, $wrap: wrap, $just: center, $align: center);
+  }
+
+  &-card {
+    @include flex($dir: column, $just: center, $align: center);
+    min-height: 50%;
+    width: 100%;
+  }
+
+  @include mq(sm) {
+    &-card {
+      max-width: 540px;
+    }
+  }
 }
 
 @include mq(sm) {

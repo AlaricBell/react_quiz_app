@@ -1,6 +1,6 @@
-const TextPrimary: React.FC<{content: string}> = ({content}) => {
+const TextPrimary: React.FC<{children: any}> = ({children}) => {
   return (
-    <p className="text-primary">{content}</p>
+    <p className="text-primary">{children}</p>
   )
 }
 

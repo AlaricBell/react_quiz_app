@@ -6,3 +6,11 @@
   width: 100%;
   padding: 2.75rem;
 }
+
+#question {
+  @include flex($dir: column, $just: space-between, $align: center);
+  height: 100vh;
+  width: 100%;
+  padding: 2.75rem;
+  background: $color-dark;
+}

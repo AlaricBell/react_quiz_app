@@ -3,4 +3,11 @@
   width: 100%;
   background: #fff;
   text-align: center;
+
+  &-question {
+    @include flex($just: center, $align: center);
+    background: $color-dark;
+    border: 2px solid $color-primary;
+    margin-bottom: 1.25rem;
+  }
 }

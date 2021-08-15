@@ -7,13 +7,14 @@ import React from 'react';
 // } from "react-router-dom";
 
 import LayoutPrimary from './components/layout/LayoutPrimary'
+import Question from './components/Question';
 import Welcome from './components/Welcome'
 
 function App() {
   return (
     <div className="App">
       <LayoutPrimary>
-        <Welcome />
+        <Question />
       </LayoutPrimary>
     </div>
   );
