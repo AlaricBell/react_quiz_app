@@ -1,3 +1,15 @@
+$color-primary: #f29f05;
+$color-dark: #0d0d0d;
+$color-light: #fff;
+
+$weights: (
+  "thin": 100,
+  "light": 300,
+  "normal": 400,
+  "bold": 700,
+  "ultra": 900,
+);
+
 $breakpoints: (
   "xs": 0,
   "sm": 576px,
