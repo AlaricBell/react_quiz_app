@@ -8,7 +8,7 @@ const Welcome: React.FC = props => {
         <TextTitle>Welcome to the Trivia Challange</TextTitle>
         <TextPrimary>You will be presented with 10 True or False questions</TextPrimary>
         <TextPrimary>Can you score 100%?</TextPrimary>
-        <ButtonSubmit>Begin</ButtonSubmit>
+        <ButtonSubmit path="/score" handleSubmit={() => console.log("submit")}>Begin</ButtonSubmit>
     </section>
   )
 }

@@ -1,6 +1,10 @@
-const ButtonSubmit: React.FC<{children: any}> = ({children}) => {
+import {
+  Link
+} from "react-router-dom";
+
+const ButtonSubmit: React.FC<{children: any, path: string, handleSubmit: () => void}> = ({children, path, handleSubmit}) => {
   return (
-    <button className="btn btn-submit">{children}</button>
+    <Link to={path}><button className="btn btn-submit" onClick={handleSubmit}>{children}</button></Link>
   )
 }
 

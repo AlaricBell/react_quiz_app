@@ -12,7 +12,7 @@ const Score: React.FC = props => {
       </div>
         
         <ListScore data="a"/>
-        <ButtonSubmit>Play again?</ButtonSubmit>
+        <ButtonSubmit path="/" handleSubmit={() => console.log("submit")}>Play again?</ButtonSubmit>
     </section>
   )
 }
