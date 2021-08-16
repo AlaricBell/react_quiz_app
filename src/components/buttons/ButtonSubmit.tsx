@@ -1,6 +1,6 @@
-const ButtonSubmit: React.FC<{content: string}> = ({content}) => {
+const ButtonSubmit: React.FC<{children: any}> = ({children}) => {
   return (
-    <button className="btn btn-submit">{content}</button>
+    <button className="btn btn-submit">{children}</button>
   )
 }
 

@@ -838,8 +838,29 @@ button:hover, button:active, button:focus {
   background: #0d0d0d;
 }
 
+#score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  width: 100%;
+  padding: 2.75rem;
+  background: #0d0d0d;
+}
+
 .text-title {
   color: #f29f05;
+  text-align: center;
 }
 
 .text-primary {
@@ -886,6 +907,30 @@ button:hover, button:active, button:focus {
   padding: 1.15rem;
 }
 
+.list-items {
+  margin-top: 2.75rem;
+  margin-bottom: auto;
+  text-align: left;
+}
+
+@media screen and (min-width: 576px) {
+  .list-items {
+    max-width: 540px;
+  }
+}
+
+.list-item {
+  font-size: 16px;
+  color: #fff;
+  background-color: #212121;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.list-item svg {
+  margin-right: 0.75rem;
+}
+
 .card {
   height: 100%;
   width: 100%;
@@ -906,5 +951,6 @@ button:hover, button:active, button:focus {
   background: #0d0d0d;
   border: 2px solid #f29f05;
   margin-bottom: 1.25rem;
+  padding: 1.25rem;
 }
 /*# sourceMappingURL=style.css.map */

@@ -9,12 +9,13 @@ import React from 'react';
 import LayoutPrimary from './components/layout/LayoutPrimary'
 import Question from './components/Question';
 import Welcome from './components/Welcome'
+import Score from './components/Score'
 
 function App() {
   return (
     <div className="App">
       <LayoutPrimary>
-        <Question />
+        <Score />
       </LayoutPrimary>
     </div>
   );

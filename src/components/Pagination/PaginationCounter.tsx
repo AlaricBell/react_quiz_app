@@ -1,9 +1,9 @@
 import TextPrimary from "../text/TextPrimary"
 
-const PaginationCounter: React.FC<{current: string, end: string}> = ({current, end}) => {
+const PaginationCounter: React.FC<{current: number, top: number}> = ({current, top}) => {
   return (
-    <div className="">
-        <TextPrimary>{current} of {end}</TextPrimary>
+    <div className="pagination-counter">
+        <TextPrimary>{current} of {top}</TextPrimary>
     </div>
   )
 }

@@ -1,0 +1,25 @@
+.list {
+  &-items {
+    margin-top: 2.75rem;
+    margin-bottom: auto;
+    text-align: left;
+  }
+
+  @include mq(sm) {
+    &-items {
+      max-width: 540px;
+    }
+  }
+
+  &-item {
+    font-size: 16px;
+    color: $color-light;
+    background-color: lighten($color-dark, 8%);
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+
+    svg {
+      margin-right: 0.75rem;
+    }
+  }
+}
