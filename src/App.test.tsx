@@ -2,6 +2,9 @@ import { render, screen } from '@testing-library/react';
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
+import {Provider} from 'react-redux'
+
+import {store} from "./stateManager/store";
 
 import Welcome from './components/Welcome'
 import Score from './components/Score'
@@ -20,13 +23,20 @@ describe("Check if pages are rendered", () => {
   })
 
   it("checkScorePageRender", () => {
-    render(<Router><Score/></Router>)
+    render(<Provider store={store}><Router><Score/></Router></Provider>)
     const pageTitle = screen.queryByText("Your Score")
     const pageLists = screen.queryAllByRole('li')
     const pageButton = screen.queryAllByRole("button")
 
     expect(pageTitle).toBeTruthy();
     expect(pageLists).toBeTruthy();
+    expect(pageButton).toBeTruthy();
+  })
+
+  it("checkQuestionPageRender", () => {
+    render(<Provider store={store}><Router><Question/></Router></Provider>)
+    const pageButton = screen.queryAllByRole("button")
+
     expect(pageButton).toBeTruthy();
   })
 })
