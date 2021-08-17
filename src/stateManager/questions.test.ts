@@ -97,3 +97,37 @@ describe("Check if question actions work correctly", () => {
     expect(result).toEqual(expected)
   })
 })
+
+
+describe("Check if question actions work correctly", () => {
+  it("questionSeed", () => {
+
+    const data: Question = {
+      category: "Entertainment: Video Games",
+      type: "boolean",
+      difficulty: "hard",
+      question: "Unturned originally started as a Roblox game.",
+      answer: "True",
+      answered: "True",
+      counter: 0
+    }
+
+    const result = questionSeed([data]);
+    const expected = {
+      type: "questionSeed",
+      payload: [{
+        category: "Entertainment: Video Games",
+        type: "boolean",
+        difficulty: "hard",
+        question: "Unturned originally started as a Roblox game.",
+        answer: "True",
+        answered: "True",
+        counter: 0
+      }]
+    }
+
+    store.dispatch(questionSeed([data]))
+
+    expect(result).toEqual(expected)
+  })
+})

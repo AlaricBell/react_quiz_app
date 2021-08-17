@@ -38,15 +38,15 @@ export const questionReset = createAction<Object>('questionReset')
 const initialState: Array<Question> = []
 
 export default createReducer(initialState, {
-  [questionAnswered.type]: (state: Array<Question>, action: PayloadAction<Action>) => {
-    state[action.payload.counter].answered = action.payload.answered
+  [questionAnswered.type]: (question: Array<Question>, action: PayloadAction<Action>) => {
+    question[action.payload.counter].answered = action.payload.answered
   },
-  [questionSeed.type]: (state: Array<Question>, action: PayloadAction<Questions>) => {
-    state.push(
+  [questionSeed.type]: (question: Array<Question>, action: PayloadAction<Questions>) => {
+    question.push(
       ...action.payload.results
     )
   },
-  [questionReset.type]: (state?: Array<Question>, action?: PayloadAction<Object>) => {
+  [questionReset.type]: (question?: Array<Question>, action?: PayloadAction<Object>) => {
     return initialState
   },
 })

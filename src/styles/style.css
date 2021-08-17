@@ -953,5 +953,13 @@ button:hover, button:active, button:focus {
   border: 2px solid #f29f05;
   margin-bottom: 1.25rem;
   padding: 1.25rem;
+  color: #fff;
+  font-size: 16px;
+}
+
+@media screen and (min-width: 576px) {
+  .card-question {
+    min-height: 540px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
