@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react"
+import { Component } from "react"
+import { connect } from 'react-redux'
+import { Redirect } from "react-router-dom";
 
 import TextTitle from "./text/TextTitle"
-import TextPrimary from "./text/TextPrimary"
 import ButtonGroup from "./buttons/ButtonGroup"
 import ButtonChoice from "./buttons/ButtonChoice"
 import CardQuestion from "./cards/CardQuestion"
 
-import { getQuestionAt } from "../lib/QuestionHandler"
+import { questionAnswered } from "../stateManager/questions"
+import { questionSeedBegan } from "../stateManager/questions"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -14,41 +16,59 @@ import {
   faThumbsDown
 } from "@fortawesome/free-solid-svg-icons"
 
-const Question: React.FC = props => {
-  const [counter, setCounter] = useState(0)
-  const [question, setQuestion] = useState({category: "",
-                                            type: "",
-                                            difficulty: "",
-                                            question: "",
-                                            correct_answer: "",
-                                            incorrect_answers: [""]})
 
-  const fetchQuestion = () => {
-    getQuestionAt(counter).then(result => setQuestion(result!))
+class Question extends Component<{questions: any, 
+                                  questionAnswered: (answer: boolean, counter: number) => void, 
+                                  questionSeedBegan: () => void}> {
+  state ={
+    counter: 0,
   }
 
-  useEffect(() => {
-    fetchQuestion()
-  }, []);
+  incrementCounter = () => {
+    this.setState(prevState => {
+      return {
+        counter: this.state.counter + 1,
+      }
+    })
+  }
 
-  return (
-    <section id="question">
-        <TextTitle>{question.category}</TextTitle>
-        <CardQuestion content={question.question} current={counter + 1} top={10}/>
-        <ButtonGroup>
-        <ButtonChoice 
-        color="#bf0413" 
-        handleChoice={() => {setCounter(counter + 1); fetchQuestion()}}>
-          <FontAwesomeIcon icon={faThumbsDown} style={{width: '24px', height: '24px'}}/>
-        </ButtonChoice>
-        <ButtonChoice 
-        color="#7dc242" 
-        handleChoice={() => {setCounter(counter + 1); fetchQuestion(); console.log(question)}}>
-          <FontAwesomeIcon icon={faThumbsUp} style={{width: '24px', height: '24px'}}/>
-        </ButtonChoice>
-        </ButtonGroup>
-    </section>
-  )
+  componentDidMount() {
+    this.props.questionSeedBegan()
+  }
+
+  render() {
+    if(this.state.counter >= 10) {
+      return <Redirect to="/score" />
+    } else {
+      return (
+        <section id="question">
+            {this.props.questions[this.state.counter]?.category && <TextTitle>{this.props.questions[this.state.counter]?.category}</TextTitle>}
+            {this.props.questions[this.state.counter]?.question && <CardQuestion content={this.props.questions[this.state.counter]?.question} current={this.state.counter + 1} top={10}/>}
+            {this.props.questions[this.state.counter]?.question && <ButtonGroup>
+              <ButtonChoice 
+              color="#bf0413" 
+              handleChoice={() => {this.props.questionAnswered((this.props.questions[this.state.counter].correct_answer === "False"), this.state.counter); this.incrementCounter();}}>
+                <FontAwesomeIcon icon={faThumbsDown} style={{width: '24px', height: '24px'}}/>
+              </ButtonChoice>
+              <ButtonChoice 
+              color="#7dc242" 
+              handleChoice={() => {this.props.questionAnswered((this.props.questions[this.state.counter].correct_answer === "True"), this.state.counter); this.incrementCounter();}}>
+                <FontAwesomeIcon icon={faThumbsUp} style={{width: '24px', height: '24px'}}/>
+              </ButtonChoice>
+            </ButtonGroup>}
+        </section>
+      )
+    }
+  }
 }
 
-export default Question;
+const mapStateToProps = (state: any) => ({
+  questions: state,
+})
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
+  questionAnswered: (answered: boolean, counter: number) => dispatch(questionAnswered({...ownProps.questions, answered, counter})),
+  questionSeedBegan: () => dispatch(questionSeedBegan({onSuccess: "questionSeed", onError: "questionSeedError", onReset: "questionReset"}))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question)

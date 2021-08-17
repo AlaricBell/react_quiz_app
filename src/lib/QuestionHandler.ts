@@ -18,12 +18,7 @@ interface Result {
   incorrect_answers: Array<string>
 }
 
-export const getQuestionAt = async (index: number) => {
-  try {
+export const getQuestions = async () => {
     const questions: response = await axios.get("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean")
-    return questions.data.results[index]
-  } catch(error) {
-    console.log(error)
-  }
-
+    return questions.data
 }
