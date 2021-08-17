@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect} from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +13,19 @@ import Question from './components/Question';
 import Welcome from './components/Welcome'
 import Score from './components/Score'
 
+import AOS from 'aos'
+import "aos/dist/aos.css"
+
 function App() {
+  useEffect(() => {
+    AOS.init({
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 50,
+      duration: 600,
+    });
+  }, []);
+
   return (
     <Provider store={store}>
       <div className="App">

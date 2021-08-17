@@ -6,17 +6,33 @@
 
   &-question {
     @include flex($just: center, $align: center);
+    height: 50vh;
+    max-width: 480px;
+    width: 90vw;
     background: $color-dark;
     border: 2px solid $color-primary;
     margin-bottom: 1.25rem;
     padding: 1.25rem;
     color: $color-light;
     font-size: 16px;
+    overflow: auto;
+
+    &.fade-right {
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(100%) scale(1);
+      opacity: 1;
+    }
+
+    &.fade-in {
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   @include mq(sm) {
     &-question {
-      min-height: 540px;
+      width: 540px;
     }
   }
 }

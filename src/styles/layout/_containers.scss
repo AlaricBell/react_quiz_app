@@ -1,6 +1,7 @@
 .container,
 .container-fluid {
   width: 100%;
+  height: auto;
   margin: 0;
   padding-right: 15px;
   padding-left: 15px;
@@ -16,14 +17,8 @@
 
   &-card {
     @include flex($dir: column, $just: center, $align: center);
-    min-height: 50%;
-    width: 100%;
-  }
-
-  @include mq(sm) {
-    &-card {
-      max-width: 540px;
-    }
+    overflow: hidden;
+    height: auto;
   }
 }
 
